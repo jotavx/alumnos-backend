@@ -1,6 +1,7 @@
 const express = require("express");
 const { request: httpRequest } = require("http");
 const nodeMailer = require("nodemailer");
+require("dotenv").config();
 
 const envioCorreo = (req = request, resp = response) => {
   let body = req.body;
@@ -11,8 +12,8 @@ const envioCorreo = (req = request, resp = response) => {
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-      user: "jvcode7@gmail.com",
-      pass: "jbof flny cdqn xtdl",
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   });
 
